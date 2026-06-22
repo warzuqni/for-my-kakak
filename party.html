@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Party Time 🎉</title>
+
+  <!-- FONT -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:'Fredoka', sans-serif;
+    }
+
+    body{
+      overflow-x:hidden;
+        overflow-y:auto;
+      background:#ffcae3;
+    }
+
+    /* BACKGROUND */
+
+    .container{
+      width:100%;
+      min-height:100vh;
+      position:relative;
+      overflow:hidden;
+
+      background:
+      linear-gradient(rgba(255,182,193,0.2),
+      rgba(255,182,193,0.2)),
+      url('https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=1600&auto=format&fit=crop')
+      center/cover no-repeat;
+    }
+
+    .overlay{
+      position:absolute;
+      inset:0;
+      background:rgba(25,0,35,0.6);
+      backdrop-filter:blur(3px);
+    }
+
+    /* CONFETTI */
+
+    .confetti{
+      position:absolute;
+      width:12px;
+      height:12px;
+      top:-10px;
+      animation:fall linear infinite;
+      opacity:0.9;
+    }
+
+    @keyframes fall{
+
+      to{
+        transform:
+        translateY(110vh)
+        rotate(720deg);
+      }
+
+    }
+
+    /* CONTENT */
+
+    .content{
+      position:relative;
+      z-index:10;
+
+      width:100%;
+      height:100%;
+
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      flex-direction:column;
+
+      text-align:center;
+      color:white;
+      padding:20px;
+    }
+
+    /* TITLE */
+
+    .title{
+      font-size:85px;
+      margin-bottom:15px;
+
+      text-shadow:
+      0 0 25px rgba(255,255,255,0.6);
+
+      animation:pop 1.5s ease;
+    }
+
+    @keyframes pop{
+
+      0%{
+        transform:scale(0.5);
+        opacity:0;
+      }
+
+      100%{
+        transform:scale(1);
+        opacity:1;
+      }
+
+    }
+
+    /* SUBTITLE */
+
+    .subtitle{
+      font-size:28px;
+      color:#ffe8f4;
+      margin-bottom:40px;
+      max-width:700px;
+      line-height:1.5;
+    }
+
+    /* CATS */
+
+    .cats{
+      display:flex;
+      gap:25px;
+      margin-bottom:35px;
+    }
+
+    .cat{
+      font-size:70px;
+      animation:bounce 2s infinite;
+      filter:drop-shadow(0 0 15px rgba(255,255,255,0.5));
+    }
+
+    .cat:nth-child(2){
+      animation-delay:0.5s;
+    }
+
+    .cat:nth-child(3){
+      animation-delay:1s;
+    }
+
+    @keyframes bounce{
+
+      0%,100%{
+        transform:translateY(0);
+      }
+
+      50%{
+        transform:translateY(-15px);
+      }
+
+    }
+
+    /* MESSAGE CARD */
+
+    .message-card{
+      background:rgba(255,255,255,0.08);
+      border:1px solid rgba(255,255,255,0.15);
+
+      backdrop-filter:blur(15px);
+
+      padding:30px;
+      border-radius:30px;
+
+      max-width:800px;
+
+      font-size:20px;
+      line-height:1.8;
+
+      color:#fff0f7;
+
+      box-shadow:
+      0 0 30px rgba(255,105,180,0.2);
+
+      animation:fadeUp 1.5s ease;
+    }
+
+    @keyframes fadeUp{
+
+      from{
+        opacity:0;
+        transform:translateY(30px);
+      }
+
+      to{
+        opacity:1;
+        transform:translateY(0);
+      }
+
+    }
+
+    /* ACHIEVEMENT */
+
+    .achievement{
+
+      margin-top:35px;
+
+      background:
+      linear-gradient(45deg,#ff69b4,#ff9ed1);
+
+      padding:18px 40px;
+
+      border-radius:50px;
+
+      font-size:22px;
+
+      box-shadow:
+      0 0 25px rgba(255,105,180,0.6);
+
+      animation:glow 2s infinite alternate;
+
+    }
+
+    @keyframes glow{
+
+      from{
+        box-shadow:
+        0 0 10px rgba(255,105,180,0.4);
+      }
+
+      to{
+        box-shadow:
+        0 0 35px rgba(255,105,180,0.9);
+      }
+
+    }
+
+    /* FOOTER */
+
+    .footer{
+      position:absolute;
+      bottom:20px;
+
+      font-size:15px;
+      color:#ffe4f2;
+
+      opacity:0.9;
+    }
+
+    /* BALLOONS */
+
+    .balloon{
+      position:absolute;
+      font-size:50px;
+      animation:fly 10s linear infinite;
+      opacity:0.9;
+    }
+
+    @keyframes fly{
+
+      from{
+        transform:translateY(100vh);
+      }
+
+      to{
+        transform:translateY(-120vh);
+      }
+
+    }
+
+    /* RESPONSIVE */
+
+    @media(max-width:768px){
+
+      .title{
+        font-size:50px;
+      }
+
+      .subtitle{
+        font-size:18px;
+      }
+
+      .message-card{
+        font-size:16px;
+        padding:20px;
+      }
+
+      .cat{
+        font-size:50px;
+      }
+
+      .achievement{
+        font-size:18px;
+        padding:15px 30px;
+      }
+
+    }
+    /* VOICE BUTTON */
+
+    .voice-btn{
+
+    margin-top:25px;
+
+    padding:16px 35px;
+
+    border:none;
+
+    border-radius:50px;
+
+    background:
+    linear-gradient(
+        45deg,
+        #ff69b4,
+        #ff9ed1
+    );
+
+    color:white;
+
+    font-size:18px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:0.3s;
+
+    box-shadow:
+    0 0 20px rgba(255,105,180,0.5);
+
+    animation:voiceGlow 2s infinite alternate;
+
+    }
+
+    /* HOVER */
+
+    .voice-btn:hover{
+
+    transform:scale(1.08);
+
+    box-shadow:
+    0 0 35px rgba(255,105,180,0.9);
+
+    }
+
+    /* CLICK */
+
+    .voice-btn:active{
+
+    transform:scale(0.96);
+
+    }
+
+    /* ANIMATION */
+
+    @keyframes voiceGlow{
+
+    from{
+
+        box-shadow:
+        0 0 10px rgba(255,105,180,0.4);
+
+    }
+
+    to{
+
+        box-shadow:
+        0 0 35px rgba(255,105,180,0.9);
+
+    }
+
+    }
+
+    ::-webkit-scrollbar{
+    width:10px;
+    }
+
+    ::-webkit-scrollbar-track{
+    background:#ffd6ea;
+    }
+
+    ::-webkit-scrollbar-thumb{
+    background:#ff69b4;
+    border-radius:20px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover{
+    background:#ff3d9a;
+    }
+  </style>
+</head>
+
+<body>
+
+    <audio id="voiceNote">
+    <source src="music/voice.mp3" type="audio/mp3">
+    </audio>
+
+  <!-- MUSIC -->
+  <audio autoplay loop>
+    <source src="music/party.mp3" type="audio/mp3">
+  </audio>
+
+  <div class="container">
+
+    <div class="overlay"></div>
+
+    <!-- BALLOONS -->
+    <div id="balloons"></div>
+
+    <!-- CONFETTI -->
+    <div id="confetti-container"></div>
+
+    <!-- CONTENT -->
+    <div class="content">
+
+      <h1 class="title">
+        PARTY TIME 🎉
+      </h1>
+
+      <p class="subtitle">
+        Mission Complete — +1 and graduatee yeyyy ❤️
+      </p>
+
+      <!-- CATS -->
+      <div class="cats">
+
+        <div class="cat">🐱</div>
+        <div class="cat">🎀</div>
+        <div class="cat">🍵</div>
+
+      </div>
+
+      <!-- MESSAGE -->
+      <div class="message-card">
+
+        Happy Birthday to the cutest nurse,  
+        strongest support player,  
+        and the sweetest matcha lover ever 💖
+
+        <br><br>
+
+        Thank you for existing,
+        healing people,
+        carrying your teammates,
+        and making the world brighter ✨
+
+        <br><br>
+
+        I hope your day is filled with happiness,
+        love,
+        cats,
+        matcha,
+        and lots of wins 🎮
+
+      </div>
+
+      <!-- ACHIEVEMENT -->
+      <div class="achievement">
+
+        🏆 Achievement Unlocked:
+        “Graduate and still be my kakk”
+
+      </div>
+
+      <button
+        class="voice-btn"
+        onclick="playVoice()"
+        >
+        ▶ Play Voice Message
+        </button>
+
+      <!-- FOOTER -->
+      <div class="footer">
+
+        Made by your Adekk 🎀
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <script>
+
+    // CONFETTI
+
+    const confettiContainer =
+    document.getElementById("confetti-container");
+
+    for(let i=0; i<180; i++){
+
+      const confetti =
+      document.createElement("div");
+
+      confetti.classList.add("confetti");
+
+      confetti.style.left =
+      Math.random()*100 + "vw";
+
+      confetti.style.animationDuration =
+      (Math.random()*3 + 2) + "s";
+
+      confetti.style.background =
+      `hsl(${Math.random()*360},100%,70%)`;
+
+      confetti.style.width =
+      Math.random()*10 + 5 + "px";
+
+      confetti.style.height =
+      Math.random()*10 + 5 + "px";
+
+      confettiContainer.appendChild(confetti);
+
+    }
+
+    // BALLOONS
+
+    const balloons =
+    document.getElementById("balloons");
+
+    const balloonEmoji =
+    ["🎈","💖","🎀","✨","🍵"];
+
+    for(let i=0; i<25; i++){
+
+      const balloon =
+      document.createElement("div");
+
+      balloon.classList.add("balloon");
+
+      balloon.innerHTML =
+      balloonEmoji[
+        Math.floor(
+          Math.random() *
+          balloonEmoji.length
+        )
+      ];
+
+      balloon.style.left =
+      Math.random()*100 + "vw";
+
+      balloon.style.animationDuration =
+      (Math.random()*8 + 8) + "s";
+
+      balloon.style.fontSize =
+      (Math.random()*30 + 30) + "px";
+
+      balloons.appendChild(balloon);
+
+    }
+
+    function playVoice(){
+
+    const voice =
+    document.getElementById("voiceNote");
+
+    voice.play();
+
+    }
+
+  </script>
+
+</body>
+</html>

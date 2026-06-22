@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Birthday Cake 🎂</title>
+
+  <!-- FONT -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:'Fredoka', sans-serif;
+    }
+
+    body{
+      overflow-x:hidden;
+        overflow-y:auto;
+      background:#ffd6ea;
+    }
+
+    /* BACKGROUND */
+
+    .container{
+      width:100%;
+      min-height:100vh;
+      position:relative;
+      overflow:hidden;
+
+      background:
+      linear-gradient(rgba(255,182,193,0.2),
+      rgba(255,182,193,0.2)),
+      url('https://images.unsplash.com/photo-1513151233558-d860c5398176?q=80&w=1600&auto=format&fit=crop')
+      center/cover no-repeat;
+    }
+
+    .overlay{
+      position:absolute;
+      inset:0;
+      background:rgba(35,0,35,0.6);
+      backdrop-filter:blur(3px);
+    }
+
+    /* PARTICLES */
+
+    .particles span{
+      position:absolute;
+      animation:float 8s linear infinite;
+      font-size:22px;
+      opacity:0.9;
+    }
+
+    @keyframes float{
+
+      from{
+        transform:translateY(100vh);
+        opacity:0;
+      }
+
+      to{
+        transform:translateY(-10vh);
+        opacity:1;
+      }
+
+    }
+
+    /* CONTENT */
+
+    .content{
+      position:relative;
+      z-index:10;
+      width:100%;
+      height:100%;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      flex-direction:column;
+      text-align:center;
+      color:white;
+      padding:20px;
+    }
+
+    /* TITLE */
+
+    .title{
+      font-size:60px;
+      margin-bottom:10px;
+      text-shadow:0 0 20px rgba(255,255,255,0.5);
+      animation:fadeIn 1.5s ease;
+    }
+
+    .subtitle{
+      font-size:22px;
+      color:#ffe6f2;
+      margin-bottom:50px;
+      opacity:0.95;
+    }
+
+    @keyframes fadeIn{
+      from{
+        opacity:0;
+        transform:translateY(30px);
+      }
+
+      to{
+        opacity:1;
+        transform:translateY(0);
+      }
+    }
+
+    /* CAKE */
+
+    .cake-container{
+      position:relative;
+      margin-bottom:40px;
+      animation:floatCake 3s ease-in-out infinite;
+    }
+
+    @keyframes floatCake{
+      0%,100%{
+        transform:translateY(0);
+      }
+
+      50%{
+        transform:translateY(-12px);
+      }
+    }
+
+    .cake{
+      position:relative;
+      width:260px;
+      height:220px;
+    }
+
+    /* TOP */
+
+    .top{
+      width:260px;
+      height:80px;
+      background:#ffb7d5;
+      border-radius:20px;
+      position:absolute;
+      top:0;
+      box-shadow:inset 0 -10px #ff94c2;
+    }
+
+    /* MIDDLE */
+
+    .middle{
+      width:260px;
+      height:70px;
+      background:#ff8fc0;
+      position:absolute;
+      top:75px;
+      border-radius:15px;
+      box-shadow:inset 0 -10px #ff74b3;
+    }
+
+    /* BOTTOM */
+
+    .bottom{
+      width:260px;
+      height:80px;
+      background:#ff69b4;
+      position:absolute;
+      top:140px;
+      border-radius:15px;
+      box-shadow:inset 0 -10px #ff4da6;
+    }
+
+    /* CANDLE */
+
+    .candle{
+      width:18px;
+      height:70px;
+      background:white;
+      position:absolute;
+      top:-60px;
+      left:50%;
+      transform:translateX(-50%);
+      border-radius:10px;
+    }
+
+    /* FLAME */
+
+    .flame{
+      width:25px;
+      height:40px;
+      background:gold;
+      position:absolute;
+      top:-38px;
+      left:50%;
+      transform:translateX(-50%);
+      border-radius:50%;
+      box-shadow:
+      0 0 20px orange,
+      0 0 40px yellow;
+      animation:flicker 0.2s infinite;
+    }
+
+    @keyframes flicker{
+      0%{
+        transform:translateX(-50%) scale(1);
+      }
+
+      50%{
+        transform:translateX(-50%) scale(1.08);
+      }
+
+      100%{
+        transform:translateX(-50%) scale(0.95);
+      }
+    }
+
+    /* MATCHA DECOR */
+
+    .matcha{
+      position:absolute;
+      bottom:-30px;
+      left:-80px;
+      font-size:55px;
+      animation:rotate 5s linear infinite;
+    }
+
+    @keyframes rotate{
+      from{
+        transform:rotate(0deg);
+      }
+
+      to{
+        transform:rotate(360deg);
+      }
+    }
+
+    /* CAT */
+
+    .cat{
+      position:absolute;
+      bottom:-25px;
+      right:-80px;
+      font-size:55px;
+      animation:bounce 2s infinite;
+    }
+
+    @keyframes bounce{
+      0%,100%{
+        transform:translateY(0);
+      }
+
+      50%{
+        transform:translateY(-12px);
+      }
+    }
+
+    /* BUTTON */
+
+    .btn{
+      margin-top:10px;
+      padding:18px 45px;
+      border:none;
+      border-radius:50px;
+      background:linear-gradient(45deg,#ff69b4,#ff9ed1);
+      color:white;
+      font-size:20px;
+      cursor:pointer;
+      transition:0.3s;
+      box-shadow:
+      0 0 20px rgba(255,105,180,0.5);
+    }
+
+    .btn:hover{
+      transform:scale(1.08);
+    }
+
+    /* TEXT */
+
+    .wish{
+      margin-top:20px;
+      font-size:18px;
+      color:#ffe6f2;
+      opacity:0.9;
+    }
+
+    /* CONFETTI */
+
+    .confetti{
+      position:absolute;
+      width:10px;
+      height:10px;
+      background:white;
+      top:-10px;
+      animation:confettiFall linear infinite;
+    }
+
+    @keyframes confettiFall{
+      to{
+        transform:translateY(110vh) rotate(720deg);
+      }
+    }
+
+    /* RESPONSIVE */
+
+    @media(max-width:768px){
+
+      .title{
+        font-size:40px;
+      }
+
+      .subtitle{
+        font-size:18px;
+      }
+
+      .cake{
+        transform:scale(0.8);
+      }
+
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <!-- MUSIC -->
+  <audio autoplay loop>
+    <source src="music/birthday.mp3" type="audio/mp3">
+  </audio>
+
+  <div class="container">
+
+    <div class="overlay"></div>
+
+    <!-- PARTICLES -->
+    <div class="particles" id="particles"></div>
+
+    <!-- CONTENT -->
+    <div class="content">
+
+      <h1 class="title">
+        Happy Birthday 🎂
+      </h1>
+
+      <p class="subtitle">
+        Make a wish and blow the candle ✨
+      </p>
+
+      <!-- CAKE -->
+      <div class="cake-container">
+
+        <div class="cake">
+
+          <!-- CANDLE -->
+          <div class="candle">
+            <div class="flame" id="flame"></div>
+          </div>
+
+          <!-- CAKE PART -->
+          <div class="top"></div>
+          <div class="middle"></div>
+          <div class="bottom"></div>
+
+          <!-- DECOR -->
+          <div class="matcha">🍵</div>
+          <div class="cat">🐱</div>
+
+        </div>
+
+      </div>
+
+      <!-- BUTTON -->
+      <button class="btn" onclick="blowCandle()">
+        Blow Candle 💨
+      </button>
+
+      <div class="wish">
+        Nurse • Gamer • Cat Lover • Matcha Lover 🎀
+      </div>
+
+    </div>
+
+  </div>
+
+  <script>
+
+    // PARTICLES
+
+    const particles = document.getElementById("particles");
+
+    const emojis = ["💖","✨","🎀","🐱","🍵"];
+
+    for(let i=0; i<40; i++){
+
+      const span = document.createElement("span");
+
+      span.innerHTML =
+      emojis[Math.floor(Math.random()*emojis.length)];
+
+      span.style.left =
+      Math.random()*100 + "vw";
+
+      span.style.animationDuration =
+      (Math.random()*5 + 5) + "s";
+
+      span.style.fontSize =
+      (Math.random()*20 + 15) + "px";
+
+      particles.appendChild(span);
+
+    }
+
+    // BLOW CANDLE
+
+    function blowCandle(){
+
+      // REMOVE FLAME
+
+      const flame = document.getElementById("flame");
+
+      flame.style.transition = "0.5s";
+      flame.style.opacity = "0";
+
+      // CONFETTI
+
+      for(let i=0; i<120; i++){
+
+        const confetti =
+        document.createElement("div");
+
+        confetti.classList.add("confetti");
+
+        confetti.style.left =
+        Math.random()*100 + "vw";
+
+        confetti.style.animationDuration =
+        (Math.random()*3 + 2) + "s";
+
+        confetti.style.background =
+        `hsl(${Math.random()*360},100%,70%)`;
+
+        document.body.appendChild(confetti);
+
+      }
+
+      // VICTORY SOUND
+
+      const audio = new Audio(
+        "https://assets.mixkit.co/active_storage/sfx/2013/2013-preview.mp3"
+      );
+
+      audio.play();
+
+      // REDIRECT
+
+      setTimeout(()=>{
+
+        document.body.style.transition = "1s";
+        document.body.style.opacity = "0";
+
+        setTimeout(()=>{
+
+          window.location.href = "love.html";
+
+        },1000);
+
+      },3500);
+
+    }
+
+  </script>
+
+</body>
+</html>
